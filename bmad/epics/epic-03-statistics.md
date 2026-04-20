@@ -1,0 +1,59 @@
+# Epic 03 — Statistics & Streaks
+
+*BMAD Method | Phase 3: Solutioning | Agent: PM (John)*
+*References: PRD FR-03, architecture.md → stats.ts (pure functions)*
+
+## Goal
+
+Users can view streak counts and completion rates for all habits via `habit stats`.
+
+## Stories
+
+### Story 03.1 — Streak Calculation (pure functions)
+
+**As a** developer,
+**I want** pure, tested streak functions,
+**so that** statistics are correct and independently verifiable.
+
+**Implementation tasks:**
+1. `currentStreak(dates, today)` in `stats.ts`
+   - If today is in dates: count backward from today until a gap
+   - If today is NOT in dates but yesterday is: count backward from yesterday
+   - If neither: return 0
+2. `longestStreak(dates)` in `stats.ts`
+   - Scan sorted dates, track max run of consecutive days
+3. `weeklyRate(dates, today)` in `stats.ts`
+   - Count completions in [today-6 .. today], divide by 7, multiply by 100
+4. Unit tests (stats.test.ts) covering:
+   - Empty dates array → all zeros
+   - Single day → streak 1
+   - Gap breaks streak (streak resets to 0 if today and yesterday both missing)
+   - Today not done, yesterday done → streak continues from yesterday
+   - Multiple runs → longestStreak picks the maximum
+
+**Acceptance criteria:** AC-04.1, AC-04.2, AC-04.3, AC-04.4
+
+---
+
+### Story 03.2 — Stats Display Command
+
+**As a** user reviewing progress,
+**I want to** run `habit stats` to see a summary for all habits,
+**so that** I can evaluate my consistency at a glance.
+
+**Implementation tasks:**
+1. Implement `printStats(habits, statsMap)` in `display.ts`
+   - Columns: Name | Current Streak | Longest Streak | 7-Day Rate
+   - Right-align numeric columns
+   - Show `0%` and `0` for habits with no completions
+2. In `index.ts` `stats` command:
+   - Fetch all habits
+   - For each: get completion dates, compute all three stats
+   - Build `statsMap` and call `printStats`
+
+**Acceptance criteria:** AC-04.1–AC-04.4
+
+## Definition of Done
+- All streak/rate functions pass unit tests
+- `habit stats` renders correct values for habits with 0, 1, and 7+ completions
+- Output columns are aligned and readable

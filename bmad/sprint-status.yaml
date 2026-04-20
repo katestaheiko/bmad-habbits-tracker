@@ -1,0 +1,60 @@
+sprints:
+  - id: sprint-1
+    name: "Foundation + Habit Management"
+    epics:
+      - id: epic-04
+        name: "CLI UX & Project Infrastructure"
+        status: completed
+        stories:
+          - id: "04.1"
+            name: "Project Bootstrap & Database Layer"
+            status: completed
+          - id: "04.2"
+            name: "CLI Entry Point & Error Handling"
+            status: completed
+          - id: "04.3"
+            name: "Display Helpers & Visual Polish"
+            status: completed
+      - id: epic-01
+        name: "Habit Management"
+        status: completed
+        stories:
+          - id: "01.1"
+            name: "Add Habit Command"
+            status: completed
+          - id: "01.2"
+            name: "List Habits Command"
+            status: completed
+          - id: "01.3"
+            name: "Delete Habit Command"
+            status: completed
+
+  - id: sprint-2
+    name: "Tracking + Statistics"
+    epics:
+      - id: epic-02
+        name: "Daily Tracking"
+        status: completed
+        stories:
+          - id: "02.1"
+            name: "Mark Habit Done"
+            status: completed
+      - id: epic-03
+        name: "Statistics & Streaks"
+        status: completed
+        stories:
+          - id: "03.1"
+            name: "Streak Calculation (pure functions)"
+            status: completed
+          - id: "03.2"
+            name: "Stats Display Command"
+            status: completed
+      - id: epic-04
+        stories:
+          - id: "04.4"
+            name: "Build, Link & End-to-End Validation"
+            status: completed
+
+overall_status: completed
+total_stories: 9
+completed_stories: 9
