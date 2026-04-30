@@ -1,0 +1,104 @@
+sprintVersion: "1.0"
+generatedBy: "BMAD Method v6.6.0 | Agent: SM (Bob) | Workflow: bmad-sprint-planning"
+date: "2026-04-30"
+outputPath: "_bmad-output/implementation-artifacts/sprint-status.yaml"
+input:
+  - "_bmad-output/planning-artifacts/epic-01-habit-management.md"
+  - "_bmad-output/planning-artifacts/epic-02-daily-tracking.md"
+  - "_bmad-output/planning-artifacts/epic-03-statistics.md"
+  - "_bmad-output/planning-artifacts/epic-04-cli-ux.md"
+
+project: "Habit Tracker CLI"
+team: "Drozd"
+
+sprints:
+  - id: sprint-1
+    goal: "Core infrastructure, habit CRUD, daily tracking"
+    status: completed
+    stories:
+      - id: "04.1"
+        title: "Project Bootstrap & Database Layer"
+        epic: "epic-04-cli-ux"
+        status: done
+        implementedIn:
+          - "src/src/db.ts"
+          - "src/package.json"
+          - "src/tsconfig.json"
+      - id: "04.2"
+        title: "CLI Entry Point & Error Handling"
+        epic: "epic-04-cli-ux"
+        status: done
+        implementedIn:
+          - "src/src/index.ts"
+          - "src/src/errors.ts"
+      - id: "01.1"
+        title: "Add Habit Command"
+        epic: "epic-01-habit-management"
+        status: done
+        implementedIn:
+          - "src/src/habits.ts"
+          - "src/src/index.ts"
+      - id: "01.2"
+        title: "List Habits Command"
+        epic: "epic-01-habit-management"
+        status: done
+        implementedIn:
+          - "src/src/habits.ts"
+          - "src/src/display.ts"
+          - "src/src/index.ts"
+      - id: "01.3"
+        title: "Delete Habit Command"
+        epic: "epic-01-habit-management"
+        status: done
+        implementedIn:
+          - "src/src/habits.ts"
+          - "src/src/index.ts"
+      - id: "02.1"
+        title: "Mark Habit Done (idempotent)"
+        epic: "epic-02-daily-tracking"
+        status: done
+        implementedIn:
+          - "src/src/tracking.ts"
+          - "src/src/index.ts"
+
+  - id: sprint-2
+    goal: "Statistics, display polish, tests, build"
+    status: completed
+    stories:
+      - id: "03.1"
+        title: "Streak Calculation (pure functions)"
+        epic: "epic-03-statistics"
+        status: done
+        implementedIn:
+          - "src/src/stats.ts"
+          - "src/tests/stats.test.ts"
+      - id: "03.2"
+        title: "Stats Display Command"
+        epic: "epic-03-statistics"
+        status: done
+        implementedIn:
+          - "src/src/display.ts"
+          - "src/src/index.ts"
+      - id: "04.3"
+        title: "Display Helpers & Visual Polish"
+        epic: "epic-04-cli-ux"
+        status: done
+        implementedIn:
+          - "src/src/display.ts"
+      - id: "04.4"
+        title: "Build, Link & End-to-End Validation"
+        epic: "epic-04-cli-ux"
+        status: done
+        notes: "All 25 tests passing; end-to-end smoke test passed"
+
+summary:
+  totalStories: 10
+  completed: 10
+  inProgress: 0
+  blocked: 0
+  testsPassing: 25
+  testsTotal: 25
+  openItems:
+    - "T-024: output message wording mismatches vs spec (4 items)"
+    - "T-028: habit stats <name> per-habit filter argument missing"
+    - "T-033–T-035: addHabit/deleteHabit/markDone unit tests need DB isolation strategy"
